@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import sendIcon from '../assets/send.png';
 import sendIcon2 from '../assets/sendIcon2.png'
 import back from '../assets/back.png';
-import styles from './NotesArea.module.css';
+import styles from './Notes.module.css';
 
 const NotesArea = (props) => {
   const [note, setNote] = useState('');

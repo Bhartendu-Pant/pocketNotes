@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Modal from './Modal';
-import Notes from './NotesArea';
+import Modal from './PopUp';
+import Notes from './Notes';
 import banner from '../assets/Banner.png';
 import lock from '../assets/lock.png';
-import './SideBarAndMessageAre.css';
+import './Home.css';
 
 const SideBar = () => {
   const [openModal, setOpenModal] = useState(false);

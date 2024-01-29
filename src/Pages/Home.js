@@ -1,10 +1,10 @@
 import React from 'react';
-import SideBarAndMessageArea from '../components/SideBarAndMessageArea';
+import HomePage from '../components/Home';
 
 const Home = () => {
   return (
     <div style={{ display: 'flex' }}>
-      <SideBarAndMessageArea />
+      <HomePage />
     </div>
   );
 };
