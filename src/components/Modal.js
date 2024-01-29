@@ -32,7 +32,7 @@ const Modal = (props) => {
   const handleChange = (e) => {
     e.preventDefault();
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    // console.log(formData.grpName);
+
   };
 
   const handleChangeColor = (e) => {
@@ -41,10 +41,25 @@ const Modal = (props) => {
       ...formData,
       [e.target.name]: e.target.getAttribute('color'),
     });
-    // console.log(formData.color);
+
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const trimmedGroupName = formData.grpName.trim().toLowerCase();
+
+
+    const existingGroup = groups.find(
+      (group) => group.groupName.trim().toLowerCase() === trimmedGroupName
+    );
+
+    if (existingGroup) {
+      alert('A group with the same name already exists. Choose a different name.');
+      return;
+    }
+
+
     if (formData.color === '') {
       alert('Please select a color');
       return;
@@ -77,8 +92,9 @@ const Modal = (props) => {
                   X
                 </button>
               </span>
-              <h2 className={styles.modalHeading}>Create New Group</h2>
-              <label className={styles.modalGrp}>Group Name</label>
+              <h2 className={styles.modalHeadingMobile}>Create New Group</h2>
+
+              <label className={styles.modalGrpMobile}>Group Name</label>
               <input
                 type="text"
                 className={styles.modalTextMobile}
@@ -86,31 +102,34 @@ const Modal = (props) => {
                 placeholder="Enter your group name"
                 onChange={handleChange}
               />
+
               <br />
-              <label className={styles.modalColor}>Choose Colour</label>
+              <label className={styles.modalColorMobile}>Choose Colour</label>
               {color.map((color, index) => (
                 <button
-                  className={`${styles.colorButton} ${
-                    formData.color === color ? 'selected' : ''
-                  }`}
+                  className={`${styles.colorButtonMobile} ${formData.color === color ? 'selected' : ''
+                    }`}
                   name="color"
                   color={color}
                   key={index}
                   id={color}
                   style={{
-                    height: '40px',
-                    width: '40px',
+                    height: '30px',
+                    width: '30px',
                     background: color,
                     borderRadius: '25px',
                     border: 'none',
-                    marginRight: '10px',
+                    marginLeft: '0.5rem'
+
                   }}
                   onClick={handleChangeColor}
                 ></button>
               ))}
+              <br />
               <button
                 className={styles.modalCreateMobile}
                 onClick={handleSubmit}
+                disabled={formData.grpName.trim() === ''}
               >
                 Create
               </button>
@@ -140,9 +159,8 @@ const Modal = (props) => {
             <label className={styles.modalColor}>Choose Colour</label>
             {color.map((color, index) => (
               <button
-                className={`${styles.colorButton}  ${
-                  formData.color === color ? 'selected' : ''
-                }`}
+                className={`${styles.colorButton}  ${formData.color === color ? 'selected' : ''
+                  }`}
                 name="color"
                 color={color}
                 key={index}
@@ -158,7 +176,7 @@ const Modal = (props) => {
                 onClick={handleChangeColor}
               ></button>
             ))}
-            <button className={styles.modalCreate} onClick={handleSubmit}>
+            <button className={styles.modalCreate} onClick={handleSubmit} disabled={formData.grpName.trim() === ''}>
               Create
             </button>
           </div>

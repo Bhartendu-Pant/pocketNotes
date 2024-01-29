@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import sendIcon from '../assets/send.png';
+import sendIcon2 from '../assets/sendIcon2.png'
 import back from '../assets/back.png';
 import styles from './NotesArea.module.css';
 
@@ -91,12 +92,12 @@ const NotesArea = (props) => {
           <div className={styles.NotesAndDateMobile}>
             {notes.map((note) => (
               <div className={styles.DateAndText}>
-                <div className={styles.DateAndTime}>
-                  <p className={styles.TimeMobile}>{note.time}</p>
-                  <p className={styles.DateMobile}>{note.date}</p>
-                </div>
-                <p className={styles.TextMobile}>{note.note}</p>
-              </div>
+               <div className={styles.TextMobile}>{note.note}</div>
+               <div className={styles.DateAndTime}>
+               <p className={styles.DateMobile}>{note.date}</p>
+               <p className={styles.TimeMobile}>{note.time}</p>
+               </div>
+             </div>
             ))}
           </div>
           <div className={styles.TextareaMobile}>
@@ -109,7 +110,7 @@ const NotesArea = (props) => {
               onKeyDown={keypress}
             ></textarea>
             <img
-              src={sendIcon}
+               src={note.trim()===''?sendIcon:sendIcon2}
               className={styles.SendImgMobile}
               alt="SendImg"
               onClick={handleSubmit}
@@ -151,7 +152,7 @@ const NotesArea = (props) => {
               onKeyDown={keypress}
             ></textarea>
             <img
-              src={sendIcon}
+              src={note.trim()===''?sendIcon:sendIcon2}
               className={styles.SendImg}
               alt="SendImg"
               onClick={handleSubmit}

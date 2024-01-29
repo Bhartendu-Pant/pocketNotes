@@ -38,7 +38,7 @@ const SideBar = () => {
     setGroupSelect(group);
   };
 
-  // console.log(groups);
+
   return (
     <>
       {screenSize.width < 989 ? (
@@ -62,16 +62,23 @@ const SideBar = () => {
                 {groups.map((group) => (
                   <div
                     key={group.id}
-                    className={`groupItem ${
-                      groupSelect === group ? 'selected' : ''
-                    }`}
+                    className={`groupItem ${groupSelect === group ? 'selected' : ''
+                      }`}
                     onClick={() => handleClick(group)}
                   >
                     <div
                       className="groupIcon"
                       style={{ background: group.color }}
                     >
-                      {group.groupName?.slice(0, 2)?.toUpperCase()}
+                      
+                      {group.groupName
+                      .split(' ').length===1
+                      ?group.groupName.slice(0, 2).toUpperCase()
+                      :group.groupName.split(' ')  
+                      .map((word,index) => index < 2 ? word[0] : '')  
+                      .join('')
+                      .toUpperCase()
+                    }
                     </div>
                     <h2 className="groupName">{group.groupName}</h2>
                   </div>
@@ -93,22 +100,28 @@ const SideBar = () => {
           <div className="sidebarContainer">
             <h1 className="heading">Pocket Notes</h1>
             <button className="CreateButton" onClick={() => setOpenModal(true)}>
-              + 
+              +
             </button>
             <div className="GroupList">
               {groups.map((group) => (
                 <div
                   key={group.id}
-                  className={`groupItem ${
-                    groupSelect === group ? 'selected' : ''
-                  }`}
+                  className={`groupItem ${groupSelect === group ? 'selected' : ''
+                    }`}
                   onClick={() => handleClick(group)}
                 >
                   <div
                     className="groupIcon"
                     style={{ background: group.color }}
                   >
-                    {group.groupName?.slice(0, 2)?.toUpperCase()}
+                    {group.groupName
+                      .split(' ').length===1
+                      ?group.groupName.slice(0, 2).toUpperCase()
+                      :group.groupName.split(' ')  
+                      .map((word,index) => index < 2 ? word[0] : '')  
+                      .join('')
+                      .toUpperCase()
+                    }
                   </div>
                   <h2 className="groupName">{group.groupName}</h2>
                 </div>

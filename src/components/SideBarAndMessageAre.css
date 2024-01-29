@@ -53,6 +53,7 @@
   align-items: center;
   display: flex;
   justify-content: center;
+  font-family: Roboto;
 }
 
 .groupItem {
@@ -130,14 +131,14 @@
 }
 
 .CreateButtonMobile {
-  height: 41px;
-  width: inherit;
-  border-radius: 50px;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
   cursor: pointer;
   color: #fff;
-  background-color: #000;
+  background-color:  #16008B;
   font-family: Roboto;
-  font-size: 24px;
+  font-size: 30px;
   font-style: normal;
   font-weight: 500;
   line-height: 97%;
@@ -145,6 +146,9 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
+  position: fixed;
+  left: 75vw;
+  bottom: 1px;
 }
 .headingMobile {
   color: #000;
@@ -155,6 +159,7 @@
   font-weight: bold;
   line-height: normal;
   letter-spacing: 0.63px;
+  text-align: center;
 }
 
 ::-webkit-scrollbar {
